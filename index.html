@@ -17,6 +17,32 @@
         }
     </style>
     <script>
+        // Block Print Screen Key
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "PrintScreen") {
+            alert("Screenshots are disabled!");
+            e.preventDefault();
+        }
+    });
+
+    // Block Copying and Right Click
+    document.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+        alert("Right-click is disabled!");
+    });
+
+    // Disable Dragging
+    document.addEventListener("dragstart", function (e) {
+        e.preventDefault();
+    });
+
+    // Detect Screen Capture Tools
+    setInterval(() => {
+        if (window.outerHeight - window.innerHeight > 200 || window.outerWidth - window.innerWidth > 200) {
+            alert("Screen capture detected! Closing the page.");
+            window.close();
+        }
+    }, 1000);
         // Disable Print Screen
         document.addEventListener("keydown", function (e) {
             if (e.key === "PrintScreen") {
